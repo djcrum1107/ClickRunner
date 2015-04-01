@@ -1,0 +1,103 @@
+html {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    background-image: url("./img/Desert_road.jpg");
+	background-size: 100% 100%;
+	margin: 0;
+    height: 100%;
+	/*
+	color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+	*/
+}
+
+#mainGame{
+	border-collapse : separate;
+	border-spacing : 10px;
+	width : 100%;
+	
+}
+
+.pane{
+	border : 1px solid black;
+	border-radius : 2px;
+	width : 50%;
+	background-color : rgba(200,200,200,0.5);
+	padding : 5px;
+	vertical-align : top;
+}
+
+#researchTable tr, td{
+	border : 1px solid black;
+	border-radius : 2px;
+	padding-right : 10px;
+}
+
+#hiringTable, #hiringTable tr, #hiringTable td{
+	border-spacing : 10px;
+	border : none;
+	text-align : center;
+}
+
+#hiringTable tr td{
+	width : 200px;
+}
+
+.hidden{
+	display : none;
+}
+
+button{
+	width : 200px;
+	display : inline;
+}
+
+#jogButton{
+	width : 100px;
+}
+
+#runButton{
+	width : 50px;
+}
+
+#runPane
+#upgradePane
+#charityPane{
+	display : inline-table;
+}
+
+#red{
+	color : red;
+}
+
+#topStrip{
+	text-align :center;
+	font-size :40px;
+	display : block;
+}
+
+#topLeftStrip{
+	width : 200px;
+	text-align :center;
+	font-size :40px;
+	display : inline-block;
+}
+
+#topRightStrip{
+	width : 200px;
+	text-align : center;
+	font-size : 40px;
+	display : inline-block;
+}
+
+#notEnoughMoney{
+	display : none;
+	font-weight : bold;
+}

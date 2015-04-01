@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Click Runner</title>
+		<link rel="stylesheet" type="text/css" href="IdleRunnerStyle.css"/>
+		<script type="application/javascript" src="jquery-2.1.1.js"></script>
+		<script type="application/javascript" src="IdleRunnerScript.js"></script>
+		<link rel="stylesheet" href="jquery-ui.min.css">
+		<script src="external/jquery/jquery.js"></script>
+		<script src="jquery-ui.min.js"></script>
+	</head>
+	
+	<body>
+	
+	<header>
+		<h1 style=text-align:center>Click Runner</h1>
+		<nav style=text-align:right>
+			<a href="./IdleRunnerStyle.css/">CSS</a> |
+			<a href="./IdleRunnerScript.js/">JavaScript</a>
+		</nav> 
+	</header>
+	
+	
+	<table id="mainGame">
+		<tr class="pane">
+			<td id="runPane" class="pane">
+				<h3><span id="playerName">Player</span></h3>
+				<p>Current Health: <span id="currentHealth">100</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Current Stamina: <span id="currentStamina">10</span>/<span id="maxStamina">10</span></p>
+				<p>
+					<button id="walkButton" onmousedown="walkClick()">Walk</button>
+					<button id="jogButton" class='hidden' onmousedown="jogClick()">Jog</button>
+					<button id="runButton" class='hidden' onmousedown="runClick()">Run</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Current Distance: <span id="currentRun">0</span>
+				</p>
+				<p>Current Money: $<span id="currentMoney">0.00</span> <span id="notEnoughMoney">Not enough money. Run more!</span></p>
+				<p>
+					<button id="workJob" onmousedown="workJob()">Work</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Current Job: <span id="currentJob">Mow Lawns</span>
+				</p>
+				<p>
+					<form>
+					Donation Amount: <input type="text" id="donationAmount" value="0">
+					</form> 
+					<button id="donateButton" onmousedown="donate(0)">Donate Money</button><button id="donateMax" onmousedown="donate(-1)">Donate All</button>
+				</p>
+			</td>
+			<td id="RoTPane" class="pane">
+				<h3>Runners</h3>
+				<table id="hiringTable">
+					<tr>
+						<td>
+							<form name="addRunnerAmount">
+								1<input type="radio" name="runnerAmount" value="1" checked>
+								10<input type="radio" name="runnerAmount" value="10">
+								100<input type="radio" name="runnerAmount" value="100">
+								1000<input type="radio" name="runnerAmount" value="1000">
+								<!--   <input type="text" value="" id="specificRunnerAmount" width="20px"><input type="radio" name="runnerAmount" value="">  -->
+							</form>
+						</td>
+						<td>
+							Cost
+						</td>
+						<td>
+							Amount
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button id="addFriendButton" onmousedown="addRunner('friends')">Bribe Friend To Run</button>
+						</td>
+						<td>
+							<span id="currentFriendsCost">10</span>
+						</td>
+						<td>
+							<span id="currentFriends">0</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button id="addTrackRunnerButton" onmousedown="addRunner('trackRunner')">High School Track Runner</button>
+						</td>
+						<td>
+							<span id="currentTrackRunnerCost">100</span>
+						</td>
+						<td>
+							<span id="currentTrackRunner">0</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button id="add5KButton" onmousedown="add5KRunner()">5K Runner</button>
+						</td>
+						<td>
+							<span id="current5KRunnerCost">1000</span>
+						</td>
+						<td>
+							<span id="current5KRunners">0</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button id="add10KButton" onmousedown="add10KRunner()">10K Runner</button>
+						</td>
+						<td>
+							<span id="current10KRunnerCost">10000</span>
+						</td>
+						<td>
+							<span id="current10KRunners">0</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button id="addHalfMarathonButton" onmousedown="addHalfMarathon()">Half Marathon Runner</button>
+						</td>
+						<td>
+							<span id="currentHalfRunnerCost">100000</span>
+						</td>
+						<td>
+							<span id="currentHalfRunners">0</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button id="addMarathonButton" onmousedown="addMarathon()">Marathon Runner</button>
+						</td>
+						<td>
+							<span id="currentMarathonRunnerCost">1000000</span>
+						</td>
+						<td>
+							<span id="currentMarathonRunners">0</span>
+						</td>
+					</tr>
+				</table>
+				
+			</td>
+		</tr>
+		<tr class="pane">
+			<td id="charityPane" class="pane">
+				<h3><span id="charityName">Charity</span></h3>
+				<p>Charity Money: $<span id="charityMoney">0.00</span></p>
+				<progress id="researchTime" value="0" max="100"></progress>
+				<table id="researchTable">
+					<tr>
+						<td>
+							Stamina Research Level: <span id="staminaResearchLevel">0</span>
+						</td>
+						<td>
+							Speed Research Level: <span id="speedResearchLevel">0</span>
+						</td>
+						<td>
+							Precision Research Level: <span id="precisionResearchLevel">0</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<progress id="staminaResearchLevelProgress" value="0" max="1"></progress>
+						</td>
+						<td>
+							<progress id="speedResearchLevelProgress" value="0" max="1"></progress>
+						</td>
+						<td>
+							<progress id="precisionResearchLevelProgress" value="0" max="1"></progress>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td id="upgradePane" class="pane">
+				<h3>Upgrades</h3>
+				<div id="tabs">
+					<ul>
+						<li><a href="#playerUpgrades">Player</a></li>
+						<li><a href="#rotUpgrades">Runners</a></li>
+						<li><a href="#CharityUpgrades">Charity</a></li>
+					</ul>
+					<div id="playerUpgrades">
+					</div>
+					<div id="rotUpgrades">
+					</div>
+					<div id="CharityUpgrades">
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr class="pane">
+			<td id="statisticPane" class="pane">
+				<h3>Statistics</h3>
+				<table id="statsTable">
+					<tr>
+						<td>
+							Playtime
+						</td>
+						<td>
+							<span id="totalGameTime">0</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Total Personal Money
+						</td>
+						<td>
+							$<span id="totalPersonalMoney">0</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Total Charity Money
+						</td>
+						<td>
+							$<span id="totalCharityMoney">0</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Money Spent on Research
+						</td>
+						<td>
+							$<span id="totalResearchMoney">0</span>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td id="optionsPane" class="pane">
+				<h3>Options</h3>
+				<button id="saveButton" onmousedown="save()">Save</button>
+				<button id="loadButton" onmousedown="load()">Load</button>
+			</td>
+		</tr>
+	</table>
+
+	<footer>
+	  <p>Posted by: Dr. Rogue</p>
+	  <p><time pubdate datetime="10.14.14"></time></p>
+	</footer> 
+	
+	</body>
+</html>
